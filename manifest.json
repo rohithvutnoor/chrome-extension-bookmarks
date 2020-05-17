@@ -1,0 +1,19 @@
+{
+    "manifest_version":2,
+    "name":"Bookmarks",
+    "description":"Find Bookmarks",
+    "version":"1.0.0",
+    "icons":{
+        "128":"icons/bookmark_128.png"
+    },
+    "browser_action":{
+        "default_icon":"icons/bookmark_19.png",
+        "default_popup":"popup.html"
+    },
+    "permissions":["activeTab"],
+    "background": {
+        "scripts": ["js/angular.js","js/popup.js"],
+        "persistent": true
+    },
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js; object-src 'self'"
+}

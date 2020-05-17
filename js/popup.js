@@ -1,23 +1,15 @@
-var sayHello = function(){
-    console.log("Hello");
-}
-function download(data, filename, type) {
-    var file = new Blob([data], {type: type});
-    if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
-        var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0); 
-    }
-}
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope, $http, $window) {
+          $scope.bookMarks = bookMarksList;
+          $scope.showList = false;
+          $scope.showValues = function(){
+            $scope.showList = true;//$scope.searchText.length < 1 ? false : true;
+          }
+          $scope.openLink = function(url){
+            $window.open(url, "_blank");
+          }
+});
+
 var bookMarksList = [
     {
         "id":1,
@@ -36,5 +28,29 @@ var bookMarksList = [
         "name":"Prime Video",
         "url":"http://www.primevideo.com",
         "tags":["amazon", "video"]
-    }
+    },
+    {
+        "id":4,
+        "name":"Prime Video",
+        "url":"http://www.primevideo.com",
+        "tags":["amazon", "video"]
+    },
+    {
+        "id":5,
+        "name":"Prime Video",
+        "url":"http://www.primevideo.com",
+        "tags":["amazon", "video"]
+    },
+    {
+        "id":6,
+        "name":"Prime Video",
+        "url":"http://www.primevideo.com",
+        "tags":["amazon", "video"]
+    },
+    {
+        "id":7,
+        "name":"Prime Video",
+        "url":"http://www.primevideo.com",
+        "tags":["amazon", "video"]
+    },
 ]
