@@ -1,0 +1,17 @@
+html {
+    min-height: height 180px;
+    width: 250px;
+    font-size: 14px;
+    padding: 0%;
+    margin: 0%;
+}
+a{
+    color: teal;
+}
+td:hover{
+   background-color: rgb(1, 173, 173);
+   cursor: pointer;
+}
+td:hover a{
+   color: white;
+}
