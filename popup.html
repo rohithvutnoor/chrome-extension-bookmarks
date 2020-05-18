@@ -4,36 +4,43 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-      <script>
-        var app = angular.module("myApp", []);
-        app.controller("myCtrl", function($scope, $http, $window) {
-          $scope.bookMarks = bookMarksList;
-          $scope.showList = false;
-          $scope.showValues = function(){
-            download("asasdas","name.json","text/json");
-            $scope.showList = $scope.searchText.length < 1 ? false : true;
-          }
-        });
-      </script>
+      <script src="js/angular.js"></script>
+      <style>
+        html {
+          min-height: height 180px;
+          width: 250px;
+          font-size: 14px;
+          padding: 0%;
+          margin: 0%;
+        }
+        a{
+          color: teal;
+        }
+        td:hover{
+          background-color: rgb(1, 173, 173);
+          cursor: pointer;
+        }
+        td:hover a{
+          color: white;
+        }
+      </style>
     </head>
 
     <body  ng-app="myApp" ng-controller="myCtrl">
       <div class="container">
         <div>
-          <input ng-model="searchText" placeholder="Search Here" ng-keyUp="showValues()">
+          <input ng-model="searchText" placeholder="Search Here" ng-focus="showValues()">
           <table id="listOfValues">
-            <tr ng-repeat="page in bookMarks | filter:searchText">
-              <td ng-show="showList"><a ng-href="{{page.url}}">{{page.name}}</a></td>
+            <tr style="font-size: 15px;" ng-click="openLink(page.url)" ng-repeat="page in bookMarks | filter:searchText">
+              <td ng-show="showList"><a ng-href="{{page.url}}" >{{page.name}}</a></td>
               <td ng-hide="true">{{page.url}}</td>
               <td ng-hide="true">{{page.tags}}</td>
             </tr>
           </table>
         </div>
       </div>
-
-      <script type="text/javascript" src="/js/popup.js"></script>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/popup.js"></script>
+      <script type="text/javascript" src="js/jquery.js"></script>
+      <script type="text/javascript" src="js/materialize.js"></script>
     </body>
   </html>
